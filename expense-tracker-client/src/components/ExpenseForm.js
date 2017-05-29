@@ -26,17 +26,15 @@ export default class ExpenseForm extends React.Component {
 
   handleSelectChange(e){
     this.setState(
-    Object.assign({}, this.state, {select: e.target.value})
+      Object.assign({}, this.state, {select: e.target.value})
     )
   }
 
   boxHandleChange(e){
-    console.log(this.state.recurring)
     this.setState(
-      Object.assign({}, this.state, {recurring: !e.target.value})
+      Object.assign({}, this.state, {recurring: !this.state.recurring})
     )
   }
-
 
   handleSubmit(e){
     e.preventDefault()
@@ -62,7 +60,7 @@ export default class ExpenseForm extends React.Component {
             <label>Recurring</label>
           <input type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
           <input type='text' placeholder='name of expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
-          <input type='text' placeholder='dollar amount' value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
+          <input type='number' placeholder='dollar amount' value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
           <input className="btn-success" type='submit' />
         </form>
       )

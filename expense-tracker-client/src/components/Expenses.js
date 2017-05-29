@@ -16,7 +16,7 @@ export default function Expenses(props){
             <tr>
               <th className="t-headers">Name</th>
               <th className="t-headers">Value</th>
-              <th className="t-headers">Type</th>
+              <th className="t-headers">Category</th>
               <th className="t-headers"> Recurring</th>
               <th className="t-headers">Date</th>
             </tr>

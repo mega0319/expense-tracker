@@ -90,6 +90,7 @@ export default class InfoContainer extends React.Component {
       <div>
         <div className="expenses">
           <h1>Your Current Expenses</h1>
+          <div id="chart-container"></div>
           <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)}/>
         </div>
         <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />
