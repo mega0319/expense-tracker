@@ -22,3 +22,27 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.expenses {
+  margin: 24px
+}
+
+.tbutton {
+  margin-left: 19px
+}
+
+.t-headers {
+  text-align: center;
+}
+
+.t-data {
+  text-align: center;
+  width: 10%;
+}
+/*table, th, td {
+   border: 2px solid black;
+}*/
+
+/*th {
+    height: 50px;
+}*/

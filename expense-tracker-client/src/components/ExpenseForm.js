@@ -5,14 +5,22 @@ export default class ExpenseForm extends React.Component {
     super()
 
     this.state = {
-      input: '',
-      select: ''
+      name: '',
+      dollar: '',
+      select: '',
+      recurring:false
     }
   }
 
-  handleChange(e){
+  nameHandleChange(e){
     this.setState(
-      Object.assign({}, this.state, {input: e.target.value})
+      Object.assign({}, this.state, {name: e.target.value})
+    )
+  }
+
+  dollarHandleChange(e){
+    this.setState(
+      Object.assign({}, this.state, {dollar: e.target.value})
     )
   }
 
@@ -22,14 +30,22 @@ export default class ExpenseForm extends React.Component {
     )
   }
 
+  boxHandleChange(e){
+    console.log(this.state.recurring)
+    this.setState(
+      Object.assign({}, this.state, {recurring: !e.target.value})
+    )
+  }
+
+
   handleSubmit(e){
     e.preventDefault()
-
+    this.props.onCreate(this.state.name, this.state.dollar, this.state.select, this.state.recurring )
   }
 
   render(){
       return (
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form className="form-inline" onSubmit={ (e) => this.handleSubmit(e)}>
           <label>
             Add an Expense Below
           </label> <br/>
@@ -41,9 +57,13 @@ export default class ExpenseForm extends React.Component {
               <option value='travel'>Travel</option>
               <option value='education'>Education</option>
               <option value='family'>Family</option>
+              <option value='charity'>Charity</option>
             </select>
-          <input type='text' placeholder='name of expense' value={this.state.input} onChange={this.handleChange.bind(this)}/>
-          <input className="btn btn-default" type='submit' />
+            <label>Recurring</label>
+          <input type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
+          <input type='text' placeholder='name of expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
+          <input type='text' placeholder='dollar amount' value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
+          <input className="btn-success" type='submit' />
         </form>
       )
 
