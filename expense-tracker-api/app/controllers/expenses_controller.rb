@@ -18,6 +18,14 @@ class ExpensesController < ApplicationController
     render json: expenses
   end
 
+  def update
+    expense = Expense.find(params[:id])
+    expense.update(expense_params)
+    expense.save
+    expenses = Expense.all
+    render json: expenses
+  end
+
   private
 
   def expense_params
