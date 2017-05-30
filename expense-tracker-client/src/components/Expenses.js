@@ -2,7 +2,7 @@ import React from 'react'
 import EachExpense from './EachExpense'
 
 export default function Expenses(props){
-
+  if (props.expenses.length > 0){
     const allExpenses = props.expenses.map( (el) => <EachExpense key={el.id} xpdata={el} onDelete={props.onDelete}/> )
 
     const totalExpenses = props.expenses.reduce( (current, expense) => {
@@ -10,7 +10,7 @@ export default function Expenses(props){
     }, 0.0)
 
     return(
-        <table className="table-striped">
+        <table className="table-striped fulltable">
          Total Expenses: ${parseFloat(totalExpenses).toFixed(2)}
           <tbody>
             <tr>
@@ -24,4 +24,7 @@ export default function Expenses(props){
           </tbody>
         </table>
     )
+  }else{
+    return null
+  }
 }

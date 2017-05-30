@@ -39,6 +39,23 @@
   text-align: center;
   width: 10%;
 }
+
+.graph {
+  padding: 24px
+}
+
+.t-data-btn {
+  float:left;
+}
+
+.form {
+  margin: 8px;
+}
+
+.fulltable {
+  align-content: center;
+  margin: 0px auto;
+}
 /*table, th, td {
    border: 2px solid black;
 }*/

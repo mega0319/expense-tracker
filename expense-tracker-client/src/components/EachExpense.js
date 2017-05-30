@@ -50,9 +50,9 @@ export default function EachExpense(props){
 
       <td className="t-data"> {formattedDate}</td>
 
-      <td className="t-data"> <button className="btn-danger tbutton" onClick={ () => props.onDelete(props.xpdata.id) }> X </button></td>
+      <td className="t-data-btn" > <button className="btn-danger tbutton" onClick={ () => props.onDelete(props.xpdata.id) }> X </button></td>
 
-      <td className="t-data"> <button className="btn-warning tbutton"> Edit </button></td>
+      <td className="t-data-btn" > <button className="btn-warning tbutton"> Edit </button></td>
 
     </tr>
   )

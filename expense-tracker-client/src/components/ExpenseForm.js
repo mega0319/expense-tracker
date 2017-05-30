@@ -47,7 +47,11 @@ export default class ExpenseForm extends React.Component {
           <label>
             Add an Expense Below
           </label> <br/>
-          <select value={this.state.select} onChange={this.handleSelectChange.bind(this)}>
+
+
+          <input className="form" type='text' placeholder='name of expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
+          <input className="form" type='number' placeholder='dollar amount' value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
+          <select className="form" value={this.state.select} onChange={this.handleSelectChange.bind(this)}>
               <option value='recreation'>Recreation</option>
               <option value='living'>Living</option>
               <option value='food'>Food</option>
@@ -58,9 +62,7 @@ export default class ExpenseForm extends React.Component {
               <option value='charity'>Charity</option>
             </select>
             <label>Recurring</label>
-          <input type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
-          <input type='text' placeholder='name of expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
-          <input type='number' placeholder='dollar amount' value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
+            <input className="form" type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
           <input className="btn-success" type='submit' />
         </form>
       )
