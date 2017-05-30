@@ -9,7 +9,7 @@ export default class NavBar extends React.Component {
       <div className='container-fluid'>
         <div className='navbar-header'>
           <a className='navbar-brand'>
-           Expense Tracker
+           e-Ledger
           </a>
         </div>
 

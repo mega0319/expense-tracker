@@ -11,7 +11,7 @@ class App extends Component {
       <div>
         <NavBar />
         <Route exact path="/categories" component={InfoContainer} />
-        <Route exact path="/about"  render={() => <h1>This is an app to help people track their expenses</h1>}/>
+        <Route exact path="/about"  render={() =>  <h3> This is an app for people who like check-ledgers!</h3>}/>
       </div>
     );
   }

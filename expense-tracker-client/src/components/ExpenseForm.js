@@ -43,7 +43,7 @@ export default class ExpenseForm extends React.Component {
 
   render(){
       return (
-        <form className="form-inline" onSubmit={ (e) => this.handleSubmit(e)}>
+        <form className="form-inline full-form" onSubmit={ (e) => this.handleSubmit(e)}>
           <label>
             Add an Expense Below
           </label> <br/>
@@ -63,7 +63,7 @@ export default class ExpenseForm extends React.Component {
             </select>
             <label>Recurring</label>
             <input className="form" type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
-          <input className="btn-success" type='submit' />
+          <input className="btn btn-success" type='submit' />
         </form>
       )
 

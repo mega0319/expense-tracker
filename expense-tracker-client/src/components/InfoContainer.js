@@ -165,12 +165,17 @@ export default class InfoContainer extends React.Component {
   render(){
     // if (this.state.expenses.length > 0 && this.state.expenseCalcs.length > 0){
       // console.log(this.state.expenseCalcs)
+      const totalExpenses = this.state.expenses.reduce( (current, expense) => {
+        return parseFloat(expense.value) + current
+      }, 0.0)
       return (
         <div>
           <div className="expenses">
-            <h1>Your Current Expenses</h1>
+            <img className="title" src={require('./checkledger.png')} alt="" width="60" height="60"/>
+            <span className="title">   e-Ledger</span>
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
+            <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3>
             <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)}/>
           </div>
           <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />

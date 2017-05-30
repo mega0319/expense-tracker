@@ -37,7 +37,7 @@
 
 .t-data {
   text-align: center;
-  width: 10%;
+  width: 15%;
 }
 
 .graph {
@@ -55,6 +55,19 @@
 .fulltable {
   align-content: center;
   margin: 0px auto;
+}
+
+.title{
+  font-size: 40px;
+  display:inline;
+}
+
+.total-expenses{
+  text-align: center;
+}
+
+.full-form{
+  margin-left: 400px;
 }
 /*table, th, td {
    border: 2px solid black;

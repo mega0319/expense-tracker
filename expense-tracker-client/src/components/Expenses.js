@@ -11,7 +11,6 @@ export default function Expenses(props){
 
     return(
         <table className="table-striped fulltable">
-         Total Expenses: ${parseFloat(totalExpenses).toFixed(2)}
           <tbody>
             <tr>
               <th className="t-headers">Name</th>

@@ -1,5 +1,5 @@
 import React from 'react';
-var LineChart = require("react-chartjs").Line;
+var LineChart = require("react-chartjs").Bar;
 
 export default class Graph extends React.Component{
   constructor(props){
