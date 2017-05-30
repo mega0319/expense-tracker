@@ -19,7 +19,7 @@ export default class InfoContainer extends React.Component {
       fetch("http://localhost:3000/expenses")
       .then( res => res.json() )
       .then( data => this.setState({
-        expenses: data
+        expenses: data.sort( (a, b) => a.value - b.value)
       }) )
       .then( () => this.calculations() )
     }
@@ -98,7 +98,7 @@ export default class InfoContainer extends React.Component {
 
     handleNewExpense(name, value, type, recurring){
       let dollarValue = parseFloat(value).toFixed(2)
-      console.log(dollarValue)
+
       let typeID
       switch (type){
         case 'recreation':
@@ -140,7 +140,58 @@ export default class InfoContainer extends React.Component {
       })
       .then( res => res.json() )
       .then( data => this.setState(
-        Object.assign({}, this.state, {expenses: data})
+        Object.assign({}, this.state, {expenses: data.sort( (a, b) => a.value - b.value)})
+      ) )
+      .then( () => this.calculations() )
+    }
+
+    handleEditExpense(id, name, value, type, recurring){
+      console.log(id, name, value, type, recurring)
+      let dollarValue = parseFloat(value).toFixed(2)
+
+      let typeID
+      switch (type){
+        case 'recreation':
+          typeID = 1
+          break;
+        case 'living':
+          typeID = 2
+          break;
+        case 'food':
+          typeID = 3
+          break;
+        case 'utilities':
+          typeID = 4
+          break;
+        case 'travel':
+          typeID = 5
+          break;
+        case 'education':
+          typeID = 6
+          break;
+        case 'family':
+          typeID = 7
+          break;
+        case 'charity':
+          typeID = 8
+          break;
+        default:
+          typeID = type
+          break;
+      }
+
+      return fetch(`http://localhost:3000/expenses/${id}`,{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "PATCH",
+        body: JSON.stringify( {expense: {name: name, value: dollarValue, type_id: typeID, recurring: recurring} } )
+      })
+      .then( res => res.json() )
+      // .then( data => console.log(data) )
+      .then( data => this.setState(
+        Object.assign({}, this.state, {expenses: data.sort( (a, b) => a.value - b.value)})
       ) )
       .then( () => this.calculations() )
     }
@@ -155,7 +206,7 @@ export default class InfoContainer extends React.Component {
       })
       .then( res => res.json() )
       .then( data => this.setState(
-        Object.assign({}, this.state, {expenses: data})
+        Object.assign({}, this.state, {expenses: data.sort( (a, b) => a.value - b.value)})
       ) )
       .then( () => this.calculations() )
       // this.props.history.push('/categories')
@@ -175,8 +226,8 @@ export default class InfoContainer extends React.Component {
             <span className="title">   e-Ledger</span>
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
-            <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3>
-            <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)}/>
+            <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3> <br/>
+            <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)} onEdit={this.handleEditExpense.bind(this)}/>
           </div>
           <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />
         </div>

@@ -46,6 +46,7 @@
 
 .t-data-btn {
   float:left;
+  padding: 12px;
 }
 
 .form {
@@ -68,6 +69,10 @@
 
 .full-form{
   margin-left: 400px;
+}
+
+.edit-form{
+  margin: 6px;
 }
 /*table, th, td {
    border: 2px solid black;

@@ -1,59 +1,81 @@
 import React from 'react'
+import EditExpense from './EditExpense'
 
-export default function EachExpense(props){
+export default class EachExpense extends React.Component{
+  constructor(){
+    super()
 
-  let formattedDate = props.xpdata.created_at.slice(0,10)
-
-  let recurring = props.xpdata.recurring === false ? "No" : "Yes"
-
-  let category
-
-  switch (props.xpdata.type_id){
-    case 1:
-      category = 'Recreation'
-      break;
-    case 2:
-      category = 'Living'
-      break;
-    case 3:
-      category = 'Food'
-      break;
-    case 4:
-      category = 'Utilities'
-      break;
-    case 5:
-      category = 'Travel'
-      break;
-    case 6:
-      category = 'Education'
-      break;
-    case 7:
-      category = 'Family'
-      break;
-    case 8:
-      category = 'Charity'
-      break;
-    default:
-      category = 'Misc'
-      break;
+    this.state = {
+      editMode: false
     }
-  return(
-    <tr>
+  }
 
-      <td className="t-data"> {props.xpdata.name}</td>
+  handleEditButton(){
+    this.setState({
+      editMode: !this.state.editMode
+    })
+  }
 
-      <td className="t-data"> ${parseFloat(props.xpdata.value).toFixed(2)}</td>
+  render(){
+    let formattedDate = this.props.xpdata.created_at.slice(0,10)
 
-      <td className="t-data"> {category}</td>
+    let recurring = this.props.xpdata.recurring === false ? "No" : "Yes"
 
-      <td className="t-data"> {recurring}</td>
+    let category
 
-      <td className="t-data"> {formattedDate}</td>
+    switch (this.props.xpdata.type_id){
+      case 1:
+        category = 'Recreation'
+        break;
+      case 2:
+        category = 'Living'
+        break;
+      case 3:
+        category = 'Food'
+        break;
+      case 4:
+        category = 'Utilities'
+        break;
+      case 5:
+        category = 'Travel'
+        break;
+      case 6:
+        category = 'Education'
+        break;
+      case 7:
+        category = 'Family'
+        break;
+      case 8:
+        category = 'Charity'
+        break;
+      default:
+        category = 'Misc'
+        break;
+      }
+    if (this.state.editMode){
+      return (
+          <EditExpense xpdata={this.props.xpdata} handleEditButton={this.handleEditButton.bind(this)} onEdit={this.props.onEdit}/>
+      )
+    }else{
+      return(
+        <tr>
 
-      <td className="t-data-btn" > <button className="btn btn-danger tbutton" onClick={ () => props.onDelete(props.xpdata.id) }> X </button></td>
+          <td className="t-data"> {this.props.xpdata.name}</td>
 
-      <td className="t-data-btn" > <button className="btn btn-warning tbutton"> Edit </button></td>
+          <td className="t-data"> ${parseFloat(this.props.xpdata.value).toFixed(2)}</td>
 
-    </tr>
-  )
+          <td className="t-data"> {category}</td>
+
+          <td className="t-data"> {recurring}</td>
+
+          <td className="t-data"> {formattedDate}</td>
+
+          <td className="t-data-btn" > <button className="btn btn-danger tbutton" onClick={ () => this.props.onDelete(this.props.xpdata.id) }> X </button></td>
+
+          <td className="t-data-btn" > <button className="btn btn-warning tbutton" onClick={ () => this.handleEditButton()}> Edit </button></td>
+
+        </tr>
+      )
+    }
+  }
 }
