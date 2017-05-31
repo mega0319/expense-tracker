@@ -62,7 +62,7 @@ export default class EachExpense extends React.Component{
 
           <td className="t-data"> {this.props.xpdata.name}</td>
 
-          <td className="t-data"> ${parseFloat(this.props.xpdata.value).toFixed(2)}</td>
+          {this.props.xpdata.deposit ? <td className="t-data green-expense"> ${parseFloat(this.props.xpdata.value).toFixed(2)}</td> : <td className="t-data red-expense"> ${parseFloat(this.props.xpdata.value).toFixed(2)}</td>}
 
           <td className="t-data"> {category}</td>
 

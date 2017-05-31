@@ -8,27 +8,15 @@ export default class Graph extends React.Component{
     this.state = {
       chartData: {
         labels: ["Recreation", "Living", "Food", "Utilities", "Travel", "Education", "Family", "Charity"],
-            datasets: [{
+        datasets: [{
                 label: 'Dollar Amount',
                 data: props.expenseData,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
+                fillColor: ["#CCCAC7"],
+                strokeColor: "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                    borderWidth: 1
+                }]
         },
         chartOptions: {
           scales: {

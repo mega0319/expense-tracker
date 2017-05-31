@@ -65,6 +65,35 @@
 
 .total-expenses{
   text-align: center;
+  color: red;
+  display: inline;
+  margin: 10px;
+}
+
+.recurring-expenses{
+  display: inline;
+  margin: 10px;
+}
+
+.total-deposits{
+  text-align: right;
+  color: green;
+  display: inline;
+  margin: 10px;
+}
+
+.net-expense{
+  text-align: right;
+  display: inline;
+  margin: 10px;
+}
+
+.red-expense{
+  color: red;
+}
+
+.green-expense{
+  color: green;
 }
 
 .full-form{

@@ -19,7 +19,7 @@ export default class InfoContainer extends React.Component {
       fetch("http://localhost:3000/expenses")
       .then( res => res.json() )
       .then( data => this.setState({
-        expenses: data.sort( (a, b) => a.value - b.value)
+        expenses: data
       }) )
       .then( () => this.calculations() )
     }
@@ -90,13 +90,11 @@ export default class InfoContainer extends React.Component {
             }
           }, 0.0)
 
-          this.setState(
-            Object.assign({}, this.state, {expenseCalcs: [recExp, livExp, foodExp, utilExp, travExp, eduExp, famExp, charExp] })
-          )
+          this.setState({expenseCalcs: [recExp, livExp, foodExp, utilExp, travExp, eduExp, famExp, charExp] })
       }
 
 
-    handleNewExpense(name, value, type, recurring){
+    handleNewExpense(name, value, type, recurring, deposit){
       let dollarValue = parseFloat(value).toFixed(2)
 
       let typeID
@@ -136,17 +134,14 @@ export default class InfoContainer extends React.Component {
           'Content-Type': 'application/json'
         },
         method: "POST",
-        body: JSON.stringify( {expense: {name: name, value: dollarValue, type_id: typeID, recurring: recurring} } )
+        body: JSON.stringify( {expense: {name: name, value: dollarValue, type_id: typeID, recurring: recurring, deposit: deposit} } )
       })
       .then( res => res.json() )
-      .then( data => this.setState(
-        Object.assign({}, this.state, {expenses: data.sort( (a, b) => a.value - b.value)})
-      ) )
+      .then( data => this.setState( {expenses: data} ))
       .then( () => this.calculations() )
     }
 
-    handleEditExpense(id, name, value, type, recurring){
-      console.log(id, name, value, type, recurring)
+    handleEditExpense(id, name, value, type, recurring, deposit){
       let dollarValue = parseFloat(value).toFixed(2)
 
       let typeID
@@ -186,12 +181,12 @@ export default class InfoContainer extends React.Component {
           'Content-Type': 'application/json'
         },
         method: "PATCH",
-        body: JSON.stringify( {expense: {name: name, value: dollarValue, type_id: typeID, recurring: recurring} } )
+        body: JSON.stringify( {expense: {name: name, value: dollarValue, type_id: typeID, recurring: recurring, deposit: deposit} } )
       })
       .then( res => res.json() )
       // .then( data => console.log(data) )
       .then( data => this.setState(
-        Object.assign({}, this.state, {expenses: data.sort( (a, b) => a.value - b.value)})
+        Object.assign({}, this.state, {expenses: data})
       ) )
       .then( () => this.calculations() )
     }
@@ -206,7 +201,7 @@ export default class InfoContainer extends React.Component {
       })
       .then( res => res.json() )
       .then( data => this.setState(
-        Object.assign({}, this.state, {expenses: data.sort( (a, b) => a.value - b.value)})
+        Object.assign({}, this.state, {expenses: data})
       ) )
       .then( () => this.calculations() )
       // this.props.history.push('/categories')
@@ -217,8 +212,31 @@ export default class InfoContainer extends React.Component {
     // if (this.state.expenses.length > 0 && this.state.expenseCalcs.length > 0){
       // console.log(this.state.expenseCalcs)
       const totalExpenses = this.state.expenses.reduce( (current, expense) => {
-        return parseFloat(expense.value) + current
+        if (expense.deposit === false){
+          return parseFloat(expense.value) + current
+        }else{
+          return 0 + current
+        }
       }, 0.0)
+
+      const recurringExpenses = this.state.expenses.reduce( (current, expense) => {
+        if (expense.recurring === true){
+          return parseFloat(expense.value) + current
+        }else{
+          return 0 + current
+        }
+      },0.0)
+
+      const totalDeposit = this.state.expenses.reduce( (current, expense) => {
+        if (expense.deposit === true){
+          return parseFloat(expense.value) + current
+        }else{
+          return 0 + current
+        }
+      },0.0)
+
+      const netExpense = totalDeposit - totalExpenses
+
       return (
         <div>
           <div className="expenses">
@@ -226,7 +244,10 @@ export default class InfoContainer extends React.Component {
             <span className="title">   e-Ledger</span>
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
-            <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3> <br/>
+            <h3 className="recurring-expenses">Recurring Expenses: ${parseFloat(recurringExpenses).toFixed(2)}</h3>
+            <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3>
+            <h3 className="total-deposits">Total Deposits: ${parseFloat(totalDeposit).toFixed(2)} </h3>
+            {netExpense < 0 ? <h3 className="net-expense red-expense">Net Expense: ${parseFloat(netExpense).toFixed(2)} </h3> : <h3 className="net-expense">Net Expense: ${parseFloat(netExpense).toFixed(2)} </h3>} <br/>
             <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />
             <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)} onEdit={this.handleEditExpense.bind(this)}/>
           </div>

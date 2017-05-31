@@ -8,7 +8,8 @@ export default class ExpenseForm extends React.Component {
       name: '',
       dollar: '',
       select: '',
-      recurring:false
+      recurring:false,
+      deposit: false
     }
   }
 
@@ -30,15 +31,28 @@ export default class ExpenseForm extends React.Component {
     )
   }
 
-  boxHandleChange(e){
+  recurringHandleChange(e){
     this.setState(
       Object.assign({}, this.state, {recurring: !this.state.recurring})
     )
   }
 
+  depositHandleChange(e){
+    this.setState(
+      Object.assign({}, this.state, {deposit: !this.state.recurring})
+    )
+  }
+
   handleSubmit(e){
     e.preventDefault()
-    this.props.onCreate(this.state.name, this.state.dollar, this.state.select, this.state.recurring )
+    this.props.onCreate(this.state.name, this.state.dollar, this.state.select, this.state.recurring, this.state.deposit )
+    this.setState({
+      name: '',
+      dollar: '0.00',
+      select: '',
+      recurring:false,
+      deposit: false
+    })
   }
 
   render(){
@@ -57,7 +71,11 @@ export default class ExpenseForm extends React.Component {
               <option value='charity'>Charity</option>
             </select>
             <label className="add-xp">Recurring</label>
-            <input className="form" type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
+            <input className="form" type='checkbox' value={this.state.recurring} onChange={this.recurringHandleChange.bind(this)} />
+
+            <label className="add-xp">Deposit</label>
+            <input className="form" type='checkbox' value={this.state.deposit} onChange={this.depositHandleChange.bind(this)} />
+
           <input className="btn btn-success add-xp" type='submit' value='+' />
         </form>
       )
