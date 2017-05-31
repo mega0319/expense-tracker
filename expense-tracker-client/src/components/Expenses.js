@@ -4,11 +4,6 @@ import EachExpense from './EachExpense'
 export default function Expenses(props){
   if (props.expenses.length > 0){
     const allExpenses = props.expenses.map( (el) => <EachExpense key={el.id} xpdata={el} onDelete={props.onDelete} onEdit={props.onEdit}/> )
-
-    const totalExpenses = props.expenses.reduce( (current, expense) => {
-      return parseFloat(expense.value) + current
-    }, 0.0)
-
     return(
         <table className="table-striped fulltable">
           <tbody>

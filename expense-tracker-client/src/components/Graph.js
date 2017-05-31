@@ -11,7 +11,7 @@ export default class Graph extends React.Component{
         datasets: [{
                 label: 'Dollar Amount',
                 data: props.expenseData,
-                fillColor: ["#CCCAC7"],
+                fillColor: ["#FFC053"],
                 strokeColor: "rgba(220,220,220,0.8)",
                 highlightFill: "rgba(220,220,220,0.75)",
                 highlightStroke: "rgba(220,220,220,1)",

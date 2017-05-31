@@ -1,5 +1,4 @@
 import React from 'react'
-import InfoContainer from './InfoContainer'
 
 export default class EditExpense extends React.Component{
   constructor(){

@@ -1,5 +1,7 @@
 import React from 'react'
 import EditExpense from './EditExpense'
+import ReactConfirmAlert, { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 export default class EachExpense extends React.Component{
   constructor(){
@@ -14,6 +16,18 @@ export default class EachExpense extends React.Component{
     this.setState({
       editMode: !this.state.editMode
     })
+  }
+
+  handleDeleteButton(){
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure you want to delete this expense?',
+      confirmLabel: 'Yes! Delete!',
+      cancelLabel: 'Cancel',
+      onConfirm: () => this.props.onDelete(this.props.xpdata.id),
+      onCancel: () => console.log("Did not delete!"),      
+    })
+
   }
 
   render(){
@@ -70,9 +84,9 @@ export default class EachExpense extends React.Component{
 
           <td className="t-data"> {formattedDate}</td>
 
-          <td className="t-data-btn" > <button className="btn btn-danger tbutton animated bounceIn" onClick={ () => this.props.onDelete(this.props.xpdata.id) }><i className="fa fa-trash-o fa-lg" aria-hidden="true"></i></button></td>
+          <td className="t-data-btn" > <button className="btn btn-danger tbutton animated bounceIn" onClick={ () => this.handleDeleteButton() }><i className="fa fa-trash-o fa-lg" aria-hidden="true"></i></button></td>
 
-          <td className="t-data-btn" > <button className="btn btn-warning tbutton animated bounceIn" onClick={ () => this.handleEditButton()}><i className="fa fa-pencil fa-lg" aria-hidden="true"></i></button></td>
+          <td className="t-data-btn" > <button className="btn btn-primary tbutton animated bounceIn" onClick={ () => this.handleEditButton()}><i className="fa fa-pencil fa-lg" aria-hidden="true"></i></button></td>
 
         </tr>
       )

@@ -240,7 +240,7 @@ export default class InfoContainer extends React.Component {
       return (
         <div>
           <div className="expenses">
-            <img className="title" src={require('./checkledger.png')} alt="" width="60" height="60"/>
+            <img className="title" src={require('./CheckBook.png')} alt="" width="60" height="60"/>
             <span className="title">   e-Ledger</span>
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
