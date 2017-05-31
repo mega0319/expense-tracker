@@ -241,7 +241,7 @@ export default class InfoContainer extends React.Component {
         <div>
           <div className="expenses">
             <img className="title" src={require('./CheckBook.png')} alt="" width="60" height="60"/>
-            <span className="title">   e-Ledger</span>
+            <span className="title t-text"> Expense Chart</span>
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
             <h3 className="recurring-expenses">Recurring Expenses: ${parseFloat(recurringExpenses).toFixed(2)}</h3>

@@ -20,12 +20,12 @@ export default class EachExpense extends React.Component{
 
   handleDeleteButton(){
     confirmAlert({
-      title: 'Confirm to submit',
+      title: 'Confirm Deletion',
       message: 'Are you sure you want to delete this expense?',
-      confirmLabel: 'Yes! Delete!',
+      confirmLabel: 'Confirm',
       cancelLabel: 'Cancel',
       onConfirm: () => this.props.onDelete(this.props.xpdata.id),
-      onCancel: () => console.log("Did not delete!"),      
+      onCancel: () => console.log("Did not delete!"),
     })
 
   }
