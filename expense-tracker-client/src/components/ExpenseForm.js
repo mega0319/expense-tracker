@@ -43,14 +43,9 @@ export default class ExpenseForm extends React.Component {
 
   render(){
       return (
-        <form className="form-inline full-form" onSubmit={ (e) => this.handleSubmit(e)}>
-          <label>
-            Add an Expense Below
-          </label> <br/>
-
-
-          <input className="form" type='text' placeholder='name of expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
-          <input className="form" type='number' placeholder='dollar amount' value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
+        <form className="form-inline full-form animated slideInRight" onSubmit={ (e) => this.handleSubmit(e)}>
+          <input className="form" size="25" type='text' placeholder='Name of Expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
+          <input className="form" type='number' placeholder='Dollar Amount' step=".01" value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
           <select className="form" value={this.state.select} onChange={this.handleSelectChange.bind(this)}>
               <option value='recreation'>Recreation</option>
               <option value='living'>Living</option>
@@ -61,9 +56,9 @@ export default class ExpenseForm extends React.Component {
               <option value='family'>Family</option>
               <option value='charity'>Charity</option>
             </select>
-            <label>Recurring</label>
+            <label className="add-xp">Recurring</label>
             <input className="form" type='checkbox' value={this.state.recurring} onChange={this.boxHandleChange.bind(this)} />
-          <input className="btn btn-success" type='submit' value='Add Expense' />
+          <input className="btn btn-success add-xp" type='submit' value='+' />
         </form>
       )
 

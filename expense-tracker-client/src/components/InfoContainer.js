@@ -227,9 +227,9 @@ export default class InfoContainer extends React.Component {
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
             <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3> <br/>
+            <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />
             <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)} onEdit={this.handleEditExpense.bind(this)}/>
           </div>
-          <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />
         </div>
       )
     // }else{

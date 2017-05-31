@@ -60,7 +60,7 @@
 
 .title{
   font-size: 40px;
-  display:inline;
+  margin: auto;
 }
 
 .total-expenses{
@@ -72,6 +72,10 @@
 }
 
 .edit-form{
+  margin: 6px;
+}
+
+.add-xp {
   margin: 6px;
 }
 /*table, th, td {

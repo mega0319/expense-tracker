@@ -50,10 +50,10 @@ export default class EditExpense extends React.Component{
   render(){
     let formattedDate = this.props.xpdata.created_at.slice(0,10)
     return (
-      <tr>
+      <tr >
         <td className="t-data edit-form"> <input type="text" placeholder={this.props.xpdata.name} onChange={this.nameHandleChange.bind(this)} /> </td>
 
-        <td className="t-data edit-form"> <input type="number" placeholder={parseFloat(this.props.xpdata.value).toFixed(2)} onChange={this.dollarHandleChange.bind(this)}/></td>
+        <td className="t-data edit-form"> <input type="number" step=".01" placeholder={parseFloat(this.props.xpdata.value).toFixed(2)} onChange={this.dollarHandleChange.bind(this)}/></td>
 
         <td className="t-data">
           <select value={this.state.select} onChange={this.handleSelectChange.bind(this)}>
@@ -78,11 +78,11 @@ export default class EditExpense extends React.Component{
         <td className="t-data"> {formattedDate}</td>
 
         <td className="t-data-btn">
-          <button className="btn btn-success tbutton" onClick={ () => this.handleEditSubmit() }>O</button>
+          <button className="btn btn-success tbutton animated bounceIn" onClick={ () => this.handleEditSubmit() }><i className="fa fa-paper-plane fa-lg" aria-hidden="true"></i></button>
         </td>
 
         <td className="t-data-btn">
-          <button className="btn btn-warning tbutton" onClick={this.props.handleEditButton}>Cancel</button>
+          <button className="btn btn-warning tbutton animated bounceIn" onClick={this.props.handleEditButton}><i className="fa fa-ban fa-lg" aria-hidden="true"></i></button>
         </td>
       </tr>
     )

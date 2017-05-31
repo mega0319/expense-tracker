@@ -58,7 +58,7 @@ export default class EachExpense extends React.Component{
       )
     }else{
       return(
-        <tr>
+        <tr className="animated slideInLeft">
 
           <td className="t-data"> {this.props.xpdata.name}</td>
 
@@ -70,9 +70,9 @@ export default class EachExpense extends React.Component{
 
           <td className="t-data"> {formattedDate}</td>
 
-          <td className="t-data-btn" > <button className="btn btn-danger tbutton" onClick={ () => this.props.onDelete(this.props.xpdata.id) }> X </button></td>
+          <td className="t-data-btn" > <button className="btn btn-danger tbutton animated bounceIn" onClick={ () => this.props.onDelete(this.props.xpdata.id) }><i className="fa fa-trash-o fa-lg" aria-hidden="true"></i></button></td>
 
-          <td className="t-data-btn" > <button className="btn btn-warning tbutton" onClick={ () => this.handleEditButton()}> Edit </button></td>
+          <td className="t-data-btn" > <button className="btn btn-warning tbutton animated bounceIn" onClick={ () => this.handleEditButton()}><i className="fa fa-pencil fa-lg" aria-hidden="true"></i></button></td>
 
         </tr>
       )
