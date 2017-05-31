@@ -58,6 +58,13 @@
   margin: 0px auto;
 }
 
+.panel {
+  display: inline-block;
+  margin: 15px;
+  width: 150px;
+  text-align: center;
+}
+
 .title{
   font-size: 40px;
 }
@@ -89,6 +96,11 @@
   margin: 10px;
 }
 
+.data-panels{
+  width:800px;
+  margin:0 auto;
+}
+
 .net-expense{
   text-align: right;
   display: inline;
@@ -104,7 +116,7 @@
 }
 
 .full-form{
-  margin-left: 400px;
+  margin-left: 250px;
 }
 
 .edit-form{
@@ -114,10 +126,3 @@
 .add-xp {
   margin: 6px;
 }
-/*table, th, td {
-   border: 2px solid black;
-}*/
-
-/*th {
-    height: 50px;
-}*/

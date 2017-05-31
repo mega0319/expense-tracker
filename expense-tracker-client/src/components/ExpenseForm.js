@@ -58,9 +58,9 @@ export default class ExpenseForm extends React.Component {
   render(){
       return (
         <form className="form-inline full-form animated slideInRight" onSubmit={ (e) => this.handleSubmit(e)}>
-          <input className="form" size="25" type='text' placeholder='Name of Expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
-          <input className="form" type='number' placeholder='Dollar Amount' step=".01" value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
-          <select className="form" value={this.state.select} onChange={this.handleSelectChange.bind(this)}>
+          <input className="form-control input-lg" size="25" type='text' placeholder='Name of Expense' value={this.state.name} onChange={this.nameHandleChange.bind(this)}/>
+          <input className="form-control input-lg" type='number' placeholder='Dollar Amount' step=".01" value={this.state.dollars} onChange={this.dollarHandleChange.bind(this)}/>
+          <select className="form form-control" value={this.state.select} onChange={this.handleSelectChange.bind(this)}>
               <option value='recreation'>Recreation</option>
               <option value='living'>Living</option>
               <option value='food'>Food</option>

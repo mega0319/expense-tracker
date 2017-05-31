@@ -244,11 +244,43 @@ export default class InfoContainer extends React.Component {
             <span className="title t-text"> Expense Chart</span>
             {this.state.expenseCalcs.length > 0 ? <Graph expenseData={this.state.expenseCalcs} /> : null}
             <div id="chart-container"></div>
-            <h3 className="recurring-expenses">Recurring Expenses: ${parseFloat(recurringExpenses).toFixed(2)}</h3>
-            <h3 className="total-expenses">Total Expenses: ${parseFloat(totalExpenses).toFixed(2)} </h3>
-            <h3 className="total-deposits">Total Deposits: ${parseFloat(totalDeposit).toFixed(2)} </h3>
-            {netExpense < 0 ? <h3 className="net-expense red-expense">Net Expense: ${parseFloat(netExpense).toFixed(2)} </h3> : <h3 className="net-expense">Net Expense: ${parseFloat(netExpense).toFixed(2)} </h3>} <br/>
+            <div className="data-panels">
+              <div className="panel panel-warning">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Recurring</h3>
+                </div>
+                <div className="panel-body">
+                  ${parseFloat(recurringExpenses).toFixed(2)}
+                </div>
+              </div>
+              <div className="panel panel-danger">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Total Expense</h3>
+                </div>
+                <div className="panel-body">
+                  ${parseFloat(totalExpenses).toFixed(2)}
+                </div>
+              </div>
+              <div className="panel panel-success">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Deposits</h3>
+                </div>
+                <div className="panel-body">
+                  ${parseFloat(totalDeposit).toFixed(2)}
+                </div>
+              </div>
+              <div className="panel panel-primary">
+                <div className="panel-heading">
+                  <h3 className="panel-title">Net Expense</h3>
+                </div>
+                <div className="panel-body">
+                  {netExpense < 0 ? <span className="red-expense"> ${parseFloat(netExpense).toFixed(2)} </span> : <span> ${parseFloat(netExpense).toFixed(2)}</span> }
+                </div>
+              </div>
+            </div>
+          <br/>
             <ExpenseForm onCreate={this.handleNewExpense.bind(this)} />
+            <br/>
             <Expenses expenses={this.state.expenses} onDelete={this.handleDeleteExpense.bind(this)} onEdit={this.handleEditExpense.bind(this)}/>
           </div>
         </div>
