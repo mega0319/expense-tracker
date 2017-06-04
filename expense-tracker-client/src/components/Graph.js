@@ -64,7 +64,7 @@ export default class Graph extends React.Component{
     if (this.props.expenseData.length > 0){
       console.log(this.state.chartData.datasets[0].data)
       return (
-        <div className="graph">
+        <div className="graph animated fadeIn">
           <LineChart data={this.state.chartData} options={this.state.chartOptions} width="1350" height="350" />
         </div>
       )

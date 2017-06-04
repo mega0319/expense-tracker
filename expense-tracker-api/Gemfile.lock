@@ -122,7 +122,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   listen (~> 3.0.5)
-  pg (~> 0.18)
+  pg
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.3)
@@ -131,4 +131,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

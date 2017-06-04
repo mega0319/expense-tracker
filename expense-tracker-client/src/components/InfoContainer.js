@@ -124,7 +124,7 @@ export default class InfoContainer extends React.Component {
           typeID = 8
           break;
         default:
-          typeID = 1
+          typeID = null
           break;
       }
 
