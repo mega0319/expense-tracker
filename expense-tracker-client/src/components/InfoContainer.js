@@ -128,6 +128,8 @@ export default class InfoContainer extends React.Component {
           break;
       }
 
+      deposit ? typeID = null : typeID
+      
       return fetch("http://localhost:3000/expenses",{
         headers: {
           'Accept': 'application/json',

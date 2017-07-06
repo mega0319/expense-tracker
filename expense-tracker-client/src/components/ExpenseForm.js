@@ -7,7 +7,7 @@ export default class ExpenseForm extends React.Component {
     this.state = {
       name: '',
       dollar: '',
-      select: 'Recreation',
+      select: 'recreation',
       recurring:false,
       deposit: false
     }
@@ -49,7 +49,7 @@ export default class ExpenseForm extends React.Component {
     this.setState({
       name: '',
       dollar: '',
-      select: 'Recreation',
+      select: 'recreation',
       recurring:false,
       deposit: false
     })

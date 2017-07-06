@@ -7,7 +7,7 @@ export default class EditExpense extends React.Component{
     this.state = {
       name: '',
       dollar: '',
-      select: '',
+      select: 'recreation',
       recurring: ''
     }
   }
